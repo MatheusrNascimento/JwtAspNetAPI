@@ -8,7 +8,7 @@ namespace JwtAspNetAPI.PipelineExtensions
 {
     public static class pipelineExtensions
     {
-        public static  IServiceCollection pipilineExtensionsMiddlewere(this IServiceCollection services)
+        public static  IServiceCollection pipelineExtensionsMiddlewere(this IServiceCollection services)
         {
             services.AddTransient<TokenService>();
 

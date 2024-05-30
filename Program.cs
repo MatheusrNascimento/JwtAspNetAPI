@@ -11,7 +11,7 @@ builder.Services.AddSwaggerGen();
 
 
 
-builder.Services.pipilineExtensionsMiddlewere();
+builder.Services.pipelineExtensionsMiddlewere();
 
 var app = builder.Build();
 
