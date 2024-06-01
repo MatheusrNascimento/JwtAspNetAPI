@@ -8,7 +8,7 @@ namespace JwtAspNetAPI.Extensions
         {
             try
             {
-                var id = user.Claims.FirstOrDefault(x => x.Type == "id")?.Value ?? "0";
+                string id = user.Claims.FirstOrDefault(x => x.Type == "id")?.Value ?? "0";
 
                 return int.Parse(id);
             }
@@ -24,7 +24,6 @@ namespace JwtAspNetAPI.Extensions
             try
             {
                 return user.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value ?? "Erro ao obter";
-
             }
             catch
 
@@ -38,7 +37,6 @@ namespace JwtAspNetAPI.Extensions
             try
             {
                 return user.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value ?? "Erro ao obter";
-
             }
             catch
 
