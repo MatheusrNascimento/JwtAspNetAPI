@@ -1,6 +1,7 @@
 using System.Security.Claims;
 using JwtAspNet.Models;
 using JwtAspNet.Services;
+using JwtAspNetAPI.Extensions;
 using JwtAspNetAPI.PipelineExtensions;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,8 +9,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-
 
 builder.Services.pipelineExtensionsMiddlewere();
 
@@ -34,11 +33,11 @@ app.MapGet("/login", (TokenService service, [FromBody] User user) =>
 
 app.MapGet("/restrict", (ClaimsPrincipal user) => new
 {
-    id = user.Claims.FirstOrDefault(x => x.Type == "id").Value,
-    name = user.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Name).Value,
-    email = user.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Email).Value,
-    GivenName = user.Claims.FirstOrDefault(x => x.Type == ClaimTypes.GivenName).Value,
-    image = user.Claims.FirstOrDefault(x => x.Type == "image").Value
+    id = user.Id(),
+    name = user.Name(),
+    email = user.Email(),
+    GivenName = user.GivenName(),
+    image = user.Image()
 
 }).RequireAuthorization()
   .WithOpenApi();
