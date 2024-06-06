@@ -20,7 +20,7 @@ namespace JwtAspNet.Services
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 SigningCredentials = credentials,
-                Expires = DateTime.UtcNow.AddDays(2),
+                Expires = DateTime.UtcNow.AddHours(2),
                 Subject = GenerateClaims(user)
             };
 
