@@ -4,11 +4,11 @@ using JwtAspNet.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 
-namespace JwtAspNetAPI.PipelineExtensions
+namespace JwtAspNetAPI.Extensions
 {
-    public static class pipelineExtensions
+    public static class PipelineExtensions
     {
-        public static  IServiceCollection pipelineExtensionsMiddlewere(this IServiceCollection services)
+        public static  IServiceCollection ConfigurationMiddlewere(this IServiceCollection services)
         {
             services.AddTransient<TokenService>();
 

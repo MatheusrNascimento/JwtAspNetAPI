@@ -2,7 +2,6 @@ using System.Security.Claims;
 using JwtAspNet.Models;
 using JwtAspNet.Services;
 using JwtAspNetAPI.Extensions;
-using JwtAspNetAPI.PipelineExtensions;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.pipelineExtensionsMiddlewere();
+builder.Services.ConfigurationMiddlewere();
 
 var app = builder.Build();
 
