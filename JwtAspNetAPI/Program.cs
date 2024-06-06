@@ -26,7 +26,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-app.MapGet("/login", (TokenService service, [FromBody] User user) =>
+app.MapPost("/login", (TokenService service, [FromBody] User user) =>
 {
     return service.CreateToken(user);
 }).WithOpenApi();
