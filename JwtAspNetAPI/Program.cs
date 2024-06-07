@@ -22,6 +22,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(c =>
     {
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "API de authenticação JWT Bearer V1");
+        c.DocumentTitle = "Authenticação Jwt Bearer";
     });
 }
 
@@ -39,11 +40,11 @@ app.MapGet("/restrict", (ClaimsPrincipal user) => new
     image = user.Image()
 
 }).RequireAuthorization()
-  .WithOpenApi();
+  .InfoHeaders();
 
 app.MapGet("/admin", () => "Usuario com acesso!")
 .RequireAuthorization("Admin")
-.WithOpenApi();
+.InfoHeaders();
 
 
 app.Run();

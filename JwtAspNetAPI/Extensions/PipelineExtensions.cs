@@ -3,6 +3,7 @@ using JwtAspNet;
 using JwtAspNet.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 
 namespace JwtAspNetAPI.Extensions
 {
@@ -32,6 +33,26 @@ namespace JwtAspNetAPI.Extensions
             });
 
             return services;
+        }
+
+        public static void InfoHeaders(this RouteHandlerBuilder appEndPoint)
+        {
+            appEndPoint.WithOpenApi(operation => new(operation)
+            {
+                Parameters = new List<OpenApiParameter>
+                {
+                    new OpenApiParameter 
+                    {
+                        Name = "Authentication",
+                        In = ParameterLocation.Header,
+                        Description = "Token de autenticação",
+                        Schema = new OpenApiSchema
+                        {
+                            Type = "Token Jwt Bearer",
+                        }
+                    }
+                },
+            });
         }
     }
 }
