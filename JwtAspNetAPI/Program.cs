@@ -3,7 +3,6 @@ using JwtAspNet.Models;
 using JwtAspNet.Services;
 using JwtAspNetAPI.Extensions;
 using Microsoft.AspNetCore.Mvc;
-using static JwtAspNetAPI.Models.Enums;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,7 +42,7 @@ app.MapGet("/restrict", (ClaimsPrincipal user) => new
   .WithOpenApi();
 
 app.MapGet("/admin", () => "Usuario com acesso!")
-.RequireAuthorization(LvlPermission.Admin.ToString())
+.RequireAuthorization("Admin")
 .WithOpenApi();
 
 
