@@ -8,10 +8,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHealthChecks();
 
 builder.Services.ConfigurationMiddlewere();
 
 var app = builder.Build();
+
+app.UseHealthChecks("/health");
 
 app.UseAuthentication();
 app.UseAuthorization();
