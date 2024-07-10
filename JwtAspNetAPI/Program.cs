@@ -39,7 +39,7 @@ app.MapGet("/restrict", (ClaimsPrincipal user) => new
     id = user.Id(),
     name = user.Name(),
     email = user.Email(),
-    GivenName = user.GivenName(),
+    givenName = user.GivenName(),
     image = user.Image()
 
 }).RequireAuthorization()
